@@ -1,4 +1,7 @@
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class index {
@@ -18,45 +21,44 @@ public class index {
             int d = sc.nextInt();
             if (d < 1 || d > 31) {
                 System.out.println("Day wrong");
-                return;
             }
             System.out.println("Write a month");
             int e = sc.nextInt();
             if (e < 1 || e > 31) {
                 System.out.println("month wrong");
-                return;
             }
             System.out.println("Write a year");
             int f = sc.nextInt();
             if (f < 1900 || f > 2050) {
                 System.out.println("Year wrong");
-                return;
             }
             //3)
             ca.leer(d, e, f);
             //4)
             if (ca.bisiesto() == true) {
-                System.out.println("Year 'bisiesto'");
+                System.out.println("1) Year 'bisiesto'");
             } else {
-                System.out.println("year no 'bisiesto'");
+                System.out.println("1) year no 'bisiesto'");
             }
             //5)
-            System.out.println("Days of month: " + ca.dayofmonth(2));
+            System.out.println("2) Days of month: " + ca.dayofmonth(2));
             //6)
-
+            //se realiza en el leer
             //7)
-            System.out.println("Short Date: " + ca.shortdate());
-
+            System.out.println("3) Short Date: " + ca.shortdate());
             //8)
+            System.out.println("4) Day pased: " + ca.daypased(1900, 1, 1));
             //9)
-            System.out.println("Long Date: " + ca.longdate());
-
+            System.out.println("5) Long Date: " + ca.longdate());
             //10)
+            
+            //11)
         }
     }
 
     public static class calendar {
-        int[][][][][][][][][][][][][][] asno= new int[2][2][2][2][2][2][2][2][2][2][2][2][2][2];
+
+        int[][][][][][][][][][][][][][] asno = new int[2][2][2][2][2][2][2][2][2][2][2][2][2][2];
         private int day;
         private int month;
         private int year;
@@ -104,9 +106,21 @@ public class index {
         }
 
         public void leer(int day, int month, int year) {
-            this.day = day;
-            this.month = month;
-            this.year = year;
+            if (day <= 0 || day > 31) {
+                this.day = 1;
+            } else {
+                this.day = day;
+            }
+            if (month <= 0 || month > 12) {
+                this.month = 1;
+            } else {
+                this.month = month;
+            }
+            if (year < 1900 || year > 2050) {
+                this.year = 1900;
+            } else {
+                this.year = year;
+            }
         }
 
         public boolean bisiesto() {
@@ -188,9 +202,7 @@ public class index {
                     d = 0;
                 }
             }
-            System.out.println("que treas " + d);
             d = ((Gmonth()) + (Gday() + d));
-            System.out.println("que trae aquí " + d);
             SevenTable();
             for (int i = 0; i < Ts.length; i++) {
                 if (Ts[i] <= d) {
@@ -203,10 +215,27 @@ public class index {
                     }
                 }
             }
-            System.out.println("qu aqundf " + d);
             ModificDay();
             //http://es.wikihow.com/calcular-el-día-de-la-semana
             return lon += Mday[d] + " " + Gday() + " de " + Mo[Gmonth() - 1] + " de " + Gyear();
+        }
+
+        public String daypased(int day, int month, int year) {
+            String a = "";
+            final long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000; //Milisegundos al día 
+
+            Calendar calendario = GregorianCalendar.getInstance();
+            java.util.Date hoy = new Date(); //Fecha de hoy 
+
+            int año = 2015;
+            int mes = 10;
+            int dia = 22; //Fecha anterior 
+            Calendar calendar = new GregorianCalendar(year, month - 1, day);
+            java.sql.Date fecha = new java.sql.Date(calendar.getTimeInMillis());
+
+            long diferencia = (hoy.getTime() - fecha.getTime()) / MILLSECS_PER_DAY;
+            a = diferencia + "";
+            return a;
         }
 
         public void ModificDay() {
