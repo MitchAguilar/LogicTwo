@@ -53,6 +53,19 @@ public class index {
             //10)
             
             //11)
+            
+            //12)
+            System.out.println("7) Next: "+ca.toString());
+            //13)
+            System.out.println("8) Ante: ");
+            //14) 
+            System.out.println("9) Copy: ");
+            //15)
+            System.out.println("10) Equals: ");
+            //16)
+            System.out.println("11) More: ");
+            //17) 
+            System.out.println("12) Litle: ");
         }
     }
 
@@ -227,9 +240,9 @@ public class index {
             Calendar calendario = GregorianCalendar.getInstance();
             java.util.Date hoy = new Date(); //Fecha de hoy 
 
-            int año = 2015;
-            int mes = 10;
-            int dia = 22; //Fecha anterior 
+//            int año = 2015;
+//            int mes = 10;
+//            int dia = 22;
             Calendar calendar = new GregorianCalendar(year, month - 1, day);
             java.sql.Date fecha = new java.sql.Date(calendar.getTimeInMillis());
 
@@ -237,7 +250,31 @@ public class index {
             a = diferencia + "";
             return a;
         }
-
+        public void Next(){
+            this.day+=1;
+            if(this.day>31&&this.month==12){
+                this.day=1;
+                this.month=1;
+                this.year++;
+            }
+            if(this.day==29){
+                if(bisiesto()){
+                    if(this.month==2){
+                        this.day=1;
+                        this.month=3;
+                    }
+                }else{
+                    this.day=29;
+                }
+            }else if(this.day==30){
+                if(Nb[this.month-1]<=this.month){
+                    
+                }else{
+                    this.day=1;
+                    this.month++;
+                }
+            }
+        }
         public void ModificDay() {
             Mday[0] = "Saturday";
             Mday[1] = "Sunday";
