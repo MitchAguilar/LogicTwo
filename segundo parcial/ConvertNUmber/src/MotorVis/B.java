@@ -94,7 +94,7 @@ public class B implements ActionListener {
 
     public int Dec(long a) {
         int dec = 0;
-        int Arr[] = new int[10];
+        int Arr[] = new int[100];
         for (int i = 0; i < Arr.length; i++) {
             Arr[i] = (int) Math.pow(2, i);
         }
@@ -118,7 +118,7 @@ public class B implements ActionListener {
             bina += (a % 2) + "";
         }
     }
-
+    
     public long oct(int a) {
         int pow = 1;
         int[] reg = new int[100];
