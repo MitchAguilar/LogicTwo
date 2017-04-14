@@ -164,12 +164,7 @@ public class H implements ActionListener {
             if (con() == false) {
                 JOptionPane.showMessageDialog(null, "Ingrese Solo numeros, no puedes engañarnos");
             } else {
-                int num = OCT(Integer.parseInt(g.getText()));
-                b.setText("Octal: " + g.getText());
-                bin(num);
-                c.setText("Binario: " + bina);
-                d.setText("Decimal: " + num);
-                f.setText("Hexadec: " + hex(num));
+               
             }
         }
     }
