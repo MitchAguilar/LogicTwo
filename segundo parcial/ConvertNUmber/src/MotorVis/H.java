@@ -3,6 +3,7 @@ package MotorVis;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigInteger;
 import javax.swing.*;
 
 public class H implements ActionListener {
@@ -67,7 +68,7 @@ public class H implements ActionListener {
     }
 
     public boolean con() {
-        String a = "0123456789";
+        String a = "0123456789ABCDEFabcdef";
         boolean b = true;
         for (int i = 0; i < g.getText().length(); i++) {
             int cm = 0;
@@ -162,13 +163,50 @@ public class H implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(h)) {
             if (con() == false) {
-                JOptionPane.showMessageDialog(null, "Ingrese Solo numeros, no puedes engañarnos");
+                JOptionPane.showMessageDialog(null, "Ingrese Solo los caracteres especiales permitidosa,"
+                        + " no puedes engañarnos");
             } else {
-               
+                System.out.println("---  " + hex_bin("12"));//c 1100
             }
         }
     }
-    public static void main(String[] arg){
-        H a= new H();
+
+    public String hex_bin(String a) {
+        String c[] = new String[16];
+        c[0] = "0000";
+        c[1] = "0001";
+        c[2] = "0010";
+        c[3] = "0011";
+        c[4] = "0100";
+        c[5] = "0101";
+        c[6] = "0110";
+        c[7] = "0111";
+        c[8] = "1000";
+        c[9] = "1001";
+        c[10] = "1010";
+        c[11] = "1011";
+        c[12] = "1100";
+        c[13] = "1101";
+        c[14] = "1110";
+        c[15] = "1111";
+        String b = "";
+        String d = "0123456789abcdef";
+        String base = "";
+        for (int i = 0; i < a.length(); i++) {
+            for (int j = 0; j < d.length(); j++) {
+                if (a.charAt(i) == d.charAt(j)) {
+                    try {
+                        base += c[Integer.parseInt(d.charAt(j) + "")];
+                    } catch (Exception e) {
+                        base += c[j];
+                    }
+                }
+            }
+        }
+        return base;
+    }
+
+    public static void main(String[] arg) {
+        H a = new H();
     }
 }
