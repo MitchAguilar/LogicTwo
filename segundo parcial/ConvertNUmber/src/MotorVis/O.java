@@ -27,7 +27,7 @@ public class O implements ActionListener {
         f = new JLabel("Hexadec: ");
         f.setBounds(220, 170, 200, 20);
         //label zone
-        e = new JLabel("Elija su opción de conversión");
+        e = new JLabel("Digite un octal");
         e.setBounds(60, 20, 300, 30);
         Font f = new Font("Courier", Font.BOLD, 15);
         e.setFont(f);
@@ -44,7 +44,7 @@ public class O implements ActionListener {
     }
 
     public void V() {
-        a = new JFrame("Decimal");
+        a = new JFrame("Octal");
         a.setSize(400, 250);
 
         a.add(b);

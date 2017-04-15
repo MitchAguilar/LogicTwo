@@ -7,28 +7,28 @@ import java.math.BigInteger;
 import javax.swing.*;
 
 public class H implements ActionListener {
-
+    
     JFrame a;
     JLabel e, b, c, d, f;
     JTextField g;
     JButton h;
     String bina = "";
-
+    
     public void C() {
         //button zone
-        b = new JLabel("Octal: ");
+        b = new JLabel("Hexadec: ");
         b.setBounds(40, 120, 200, 20);
-
+        
         c = new JLabel("Binario: ");
         c.setBounds(220, 120, 200, 20);
-
+        
         d = new JLabel("Decimal: ");
         d.setBounds(40, 170, 200, 20);
-
-        f = new JLabel("Hexadec: ");
+        
+        f = new JLabel("Octal: ");
         f.setBounds(220, 170, 200, 20);
         //label zone
-        e = new JLabel("Elija su opción de conversión");
+        e = new JLabel("Digite un hexadecimal");
         e.setBounds(60, 20, 300, 30);
         Font f = new Font("Courier", Font.BOLD, 15);
         e.setFont(f);
@@ -37,17 +37,17 @@ public class H implements ActionListener {
         //number zone        
         g = new JTextField();
         g.setBounds(20, 70, 200, 25);
-
+        
         h = new JButton("Calcular");
         h.setForeground(Color.BLACK);
         h.addActionListener(this);
         h.setBounds(230, 70, 100, 25);
     }
-
+    
     public void V() {
-        a = new JFrame("Decimal");
+        a = new JFrame("Hexadecimal");
         a.setSize(400, 250);
-
+        
         a.add(b);
         a.add(c);
         a.add(d);
@@ -61,12 +61,12 @@ public class H implements ActionListener {
         a.setLocationRelativeTo(null);
         a.setDefaultCloseOperation(a.HIDE_ON_CLOSE);
     }
-
+    
     public H() {
         C();
         V();
     }
-
+    
     public boolean con() {
         String a = "0123456789ABCDEFabcdef";
         boolean b = true;
@@ -84,7 +84,7 @@ public class H implements ActionListener {
         }
         return b;
     }
-
+    
     public static void C(long a) {
         if (a < 1) {
             return;
@@ -102,7 +102,7 @@ public class H implements ActionListener {
             bina += (a % 2) + "";
         }
     }
-
+    
     public long oct(int a) {
         int pow = 1;
         int[] reg = new int[100];
@@ -121,10 +121,10 @@ public class H implements ActionListener {
             a = Math.abs((base * reg[j] - a));
             num += "" + base;
         }
-
+        
         return Long.parseLong(num);
     }
-
+    
     public String hex(int a) {
         int pow = 1;
         int[] reg = new int[100];
@@ -146,7 +146,7 @@ public class H implements ActionListener {
         }
         return num;
     }
-
+    
     public int OCT(int a) {
         String b = "" + a;
         int base = 0;
@@ -159,6 +159,24 @@ public class H implements ActionListener {
         return base;
     }
 
+    public int Dec(long a) {
+        int dec = 0;
+        int Arr[] = new int[100];
+        for (int i = 0; i < Arr.length; i++) {
+            Arr[i] = (int) Math.pow(2, i);
+        }
+        String b = a + "";
+        System.out.println(b);
+        int le = b.length() - 1;
+        for (int i = 0; i < b.length(); i++) {
+            if (b.charAt(i) != '0') {
+                dec += Arr[le];
+            }
+            le--;
+        }
+        return dec;
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(h)) {
@@ -166,11 +184,25 @@ public class H implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Ingrese Solo los caracteres especiales permitidosa,"
                         + " no puedes engañarnos");
             } else {
-                System.out.println("---  " + hex_bin("12"));//c 1100
+                String bin = "";
+                String cad = hex_bin(g.getText());
+                
+                for (int i = 0; i < cad.length(); i++) {
+                    if (cad.charAt(i) == '1') {
+                        bin = cad.substring(i, cad.length());
+                        break;
+                    }
+                }
+                
+                int n = Dec(Long.parseLong(bin));
+                b.setText("Hexadec: "+g.getText());
+                c.setText("Binario: "+bin);
+                d.setText("Decimal: "+n);
+                f.setText("Octal: "+oct(n));
             }
         }
     }
-
+    
     public String hex_bin(String a) {
         String c[] = new String[16];
         c[0] = "0000";
@@ -204,9 +236,5 @@ public class H implements ActionListener {
             }
         }
         return base;
-    }
-
-    public static void main(String[] arg) {
-        H a = new H();
     }
 }

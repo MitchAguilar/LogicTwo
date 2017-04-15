@@ -27,7 +27,7 @@ public class D implements ActionListener {
         f = new JLabel("Hexadec: ");
         f.setBounds(220, 170, 200, 20);
         //label zone
-        e = new JLabel("Elija su opción de conversión");
+        e = new JLabel("Digite un decimal");
         e.setBounds(60, 20, 300, 30);
         Font f = new Font("Courier", Font.BOLD, 15);
         e.setFont(f);
