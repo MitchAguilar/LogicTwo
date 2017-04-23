@@ -1,5 +1,10 @@
 package numeriuno;
-
+/*
+Escribir una clase RELOJ que simule el comportamiento de un cronómetro
+digital (con los métodos puesta_a_cero, incremento, etc.). Cuando el
+contador llegue a 23:59:59 y se invoque el método incremento deberá pasar
+a 00:00:00.
+*/
 import java.util.Scanner;
 
 public class NumeriUno {
