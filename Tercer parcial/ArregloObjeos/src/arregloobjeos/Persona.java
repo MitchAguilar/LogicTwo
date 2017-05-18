@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package arregloobjeos;
 
-/**
- *
- * @author r.vergara
- */
 public class Persona {
 
     private String Nombre, Genero;
@@ -16,7 +7,6 @@ public class Persona {
 
     public Persona()
     {
-        
     }
     public Persona(String Nombre, String Genero, int edad) {
         this.Nombre = Nombre;
@@ -35,9 +25,8 @@ public class Persona {
     public int getEdad() {
         return edad;
     }
-
-    @Override
-    public String toString() {
+//    @Override
+    public String Persona() {
         return Nombre + "\tGenero: " + Genero + "\tEdad: " + edad + "\n";
     }
 
