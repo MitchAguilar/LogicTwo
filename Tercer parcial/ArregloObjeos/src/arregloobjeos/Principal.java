@@ -15,7 +15,7 @@ public class Principal {
             do {
                 try {
                     System.out.println("*****************------------*****************");
-                    System.out.println("Opciones\n\n1. Ingresar una persona\n2. Listar personas\n3. Mostrar Mujeres\n4. Mostrar Hombres\n5. Mostrar mayores de edad");
+                    System.out.println("Opciones\n\n1. Ingresar una persona\n2. Listar personas\n3. Mostrar Mujeres\n4. Mostrar Hombres\n5. Mostrar mayores de edad\n6. Ordenar Arreglo\n");
                     op = sc.nextInt();
                     switch (op) {
                         case 1:
@@ -38,7 +38,7 @@ public class Principal {
                             System.out.println("Los Mayores de Edad registrados son:\n" + gru.MayoresEdad());
                             break;
                         case 6:
-                            System.out.println("Hasta luego");
+                            gru.OrdenarArreglo();
                             break;
                     }
 
@@ -47,7 +47,7 @@ public class Principal {
                 } finally {
                     sc = new Scanner(System.in);
                 }
-            } while (op != 6);
+            } while (op != 7);
 
         } catch (Exception ex) {
             System.err.println("El dato ingresado no es valido");

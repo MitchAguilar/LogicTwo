@@ -58,4 +58,17 @@ public class Grupo {
         }
         return (r.equals("") ? "No hay personas registradas" : r);
     }
+    public void OrdenarArreglo(){
+        Persona aux[]= new Persona[1];
+        for (int i = 1; i < Cantidad; i++) {
+            for (int j = 0; j < Cantidad-i; j++) {
+                if(arreglo[j+1].getEdad()< arreglo[j].getEdad()){
+                    aux[0] =arreglo[j+1];
+                    arreglo[j+1]=arreglo[j];
+                    arreglo[j]=aux[0];
+                }
+            }
+        }
+        ListarPersonas();
+    }
 }
