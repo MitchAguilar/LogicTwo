@@ -17,7 +17,7 @@ public class Estudiante extends Persona {
         notas = new double[Notas_Por_Materia * Cantidad_Materias];
         Notas = Notas_Por_Materia;
         Promedio = new Double[Cantidad_Materias];
-        NotasPorMatariaDeEstudiante();
+//        NotasPorMatariaDeEstudiante();
     }
 
     public void NotasPorMatariaDeEstudiante() {
