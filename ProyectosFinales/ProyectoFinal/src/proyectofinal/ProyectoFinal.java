@@ -80,31 +80,26 @@ public class ProyectoFinal {
         ///////operación suma
         int aux = 0;
         String acum = "";
-        for (int i = a-1; i >= 0; i--) {
+        for (int i = a - 1; i >= 0; i--) {
             if (aux == 0) {
                 if ((val1[i] + val2[i]) == 2) {
                     aux = 1;
-//                    resul1[i] = 0;
                     acum += 0;
                 } else {
-//                    resul1[i] = (val1[i - 1] + val2[i - 1]);
                     acum += val1[i] + val2[i];
                 }
             } else {
                 switch (val1[i] + val2[i]) {
                     case 2:
                         aux = 1;
-//                        resul1[i] = 1;
                         acum += 1;
                         break;
                     case 1:
                         aux = 1;
-//                        resul1[i] = 0;
                         acum += 0;
                         break;
                     default:
                         aux = 0;
-//                        resul1[i] = 1;
                         acum += 1;
                         break;
                 }
@@ -113,16 +108,64 @@ public class ProyectoFinal {
 
         if (aux == 1) {
             acum += 1;
+        } else {
+            System.out.print("    ");
         }
         for (int i = acum.length() - 1; i >= 0; i--) {
             System.out.print(" [" + acum.charAt(i) + "]");
         }
-//        if (aux == 1) {
-//            resul1[a] = 1;
-//            System.out.print("--1");
-//        }
-        //resultado suma
+        System.out.print("\n");
+        //mostrar como quedan los arreglos que ne éste caso van a ser las restas
+        pint = "";
+        System.out.println("\n\n-_-_-_- OPERATION REST -_-_-_-\n");
+        System.out.print("    ");
+        for (int i = 0; i < a; i++) {
+            System.out.print(" [" + val1[i] + "]");
+            pint += "----";
+        }
+        System.out.println("\n-");
+        System.out.print("    ");
+        for (int i = 0; i < a; i++) {
+            System.out.print(" [" + val2[i] + "]");
+        }
+        System.out.println("\n    " + pint);
+        ///////operación resta
+        int aux1 = 0;
+        String acum1 = "";
+        for (int i = a - 1; i >= 0; i--) {
+            if (aux1 == 0) {
+                if ((val1[i] - val2[i]) == 0) {
+                    aux1 = 0;
+                    acum1 += 0;
+                } else {
+                    acum1 += val1[i] - val2[i];
+                }
+            } else {
+                switch (val1[i] - val2[i]) {
+                    case 2:
+                        aux1 = -1;
+                        acum1 += 1;
+                        break;
+                    case 1:
+                        aux1 = -1;
+                        acum1 += 0;
+                        break;
+                    default:
+                        aux1 = 0;
+                        acum1 += 1;
+                        break;
+                }
+            }
+        }
 
+        if (aux1 == 1) {
+            acum1 += 1;
+        } else {
+            System.out.print("    ");
+        }
+        for (int i = acum1.length() - 1; i >= 0; i--) {
+            System.out.print(" [" + acum1.charAt(i) + "]");
+        }
         System.out.print("\n");
 
     }
