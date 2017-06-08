@@ -132,28 +132,84 @@ public class ProyectoFinal {
         ///////operación resta
         int aux1 = 0;
         String acum1 = "";
-        for (int i = a - 1; i >= 0; i--) {
-            if (aux1 == 0) {
-                if ((val1[i] - val2[i]) == 0) {
-                    aux1 = 0;
-                    acum1 += 0;
+        //convertir para comprobar
+        String num1 = "", num2 = "";
+        for (int i = 0; i < a; i++) {
+            num1 += val1[i];
+            num2 += val2[i];
+        }
+        long number = Integer.parseInt(num1, 2);
+        long number2 = Integer.parseInt(num2, 2);
+        if (number == number2) {
+            for (int i = 0; i < a; i++) {
+                acum1 += 0;
+            }
+        } else if (number > number2) {
+            for (int i = a - 1; i >= 0; i--) {
+                if (aux1 == 0) {
+                    switch (val1[i] - val2[i]) {
+                        case 0:
+                            aux1 = 0;
+                            acum1 += 0;
+                            break;
+                        case 1:
+                            aux1 = 0;
+                            acum1 += 1;
+                            break;
+                        default:
+                            aux1 = 1;
+                            acum1 += 1;
+                            break;
+                    }
                 } else {
-                    acum1 += val1[i] - val2[i];
+                    switch (val1[i] - val2[i]) {
+                        case 0:
+                            aux1 = 1;
+                            acum1 += 1;
+                            break;
+                        case 1:
+                            aux1 = 0;
+                            acum1 += 0;
+                            break;
+                        default:
+                            aux1 = 1;
+                            acum1 += 0;
+                            break;
+                    }
                 }
-            } else {
-                switch (val1[i] - val2[i]) {
-                    case 2:
-                        aux1 = -1;
-                        acum1 += 1;
-                        break;
-                    case 1:
-                        aux1 = -1;
-                        acum1 += 0;
-                        break;
-                    default:
-                        aux1 = 0;
-                        acum1 += 1;
-                        break;
+            }
+        } else {
+            for (int i = a - 1; i >= 0; i--) {
+                if (aux1 == 0) {
+                    switch (val2[i] - val1[i]) {
+                        case 0:
+                            aux1 = 0;
+                            acum1 += 0;
+                            break;
+                        case 1:
+                            aux1 = 0;
+                            acum1 += 1;
+                            break;
+                        default:
+                            aux1 = 1;
+                            acum1 += 1;
+                            break;
+                    }
+                } else {
+                    switch (val2[i] - val1[i]) {
+                        case 0:
+                            aux1 = 1;
+                            acum1 += 1;
+                            break;
+                        case 1:
+                            aux1 = 0;
+                            acum1 += 0;
+                            break;
+                        default:
+                            aux1 = 1;
+                            acum1 += 0;
+                            break;
+                    }
                 }
             }
         }
@@ -168,6 +224,21 @@ public class ProyectoFinal {
         }
         System.out.print("\n");
 
+        
+        
+         //mostrar como quedan los arreglos que ne éste caso van a ser las multiplicación
+        pint = "";
+        System.out.println("\n\n-_-_-_- OPERATION REST -_-_-_-\n");
+        System.out.print("    ");
+        for (int i = 0; i < a; i++) {
+            System.out.print(" [" + val1[i] + "]");
+            pint += "----";
+        }
+        System.out.println("\n-");
+        System.out.print("    ");
+        for (int i = 0; i < a; i++) {
+            System.out.print(" [" + val2[i] + "]");
+        }
+        System.out.println("\n    " + pint);
     }
-
 }
