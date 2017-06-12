@@ -1,68 +1,53 @@
-package proyectofinal;
+package danieladiana;
 
-import java.util.Scanner;
+public class SistemasNumericos {
 
-public class ProyectoFinal {
+    int tam1, tam2;
+    Binario ValorOne, ValorTwo;
+    String pint = "", bina = "";
+    int val1[];
+    int val2[];
+    int a, b, aa;
 
-    public static void main(String[] args) {
-        Scanner tc = new Scanner(System.in);
-        String ValorOne = "";
-        String ValorTwo = "";
-        int tam1 = 0;
-        int tam2 = 0;
-        System.out.println("Digite su primer Binario");
-        ValorOne = tc.next();
-        //comprobacion
-        for (int i = 0; i < ValorOne.length(); i++) {
-            if (ValorOne.charAt(i) != '0' && ValorOne.charAt(i) != '1') {
-                System.err.println("Digite un binario correcto");
-                ValorOne = tc.next();
-                i = 0;
-            }
-        }
-        tam1 = ValorOne.length();
-        //reset scanner
-        tc = new Scanner(System.in);
-        //pedir nuevas otro valor
-        System.out.println("Digite su segundo numero");
-        ValorTwo = tc.next();
-        //comprobación
-        for (int i = 0; i < ValorTwo.length(); i++) {
-            if (ValorTwo.charAt(i) != '0' && ValorTwo.charAt(i) != '1') {
-                System.err.println("Digite un numero correcto");
-                ValorTwo = tc.next();
-                i = 0;
-            }
-        }
-        tam2 = ValorTwo.length();
+    public SistemasNumericos(Binario one, Binario two, int tam1, int tam2) {
+        ValorOne = one;
+        ValorTwo = two;
+        this.tam1 = tam1;
+        this.tam2 = tam2;
+        //var of values
+        a = Math.max(tam1, tam2);
+        b = Math.min(tam1, tam2);
+        aa = (a - b);
+        val1 = new int[a];
+        val2 = new int[a];
+    }
+
+    public void normalizarArreglos() {
         //////////////////////igualación///////////////////////
-        int a = Math.max(tam1, tam2);
-        int b = Math.min(tam1, tam2);
-        String pint = "";
-        int val1[] = new int[a];
-        int val2[] = new int[a];
-        int aa = (a - b);
         //meter el primer valor
-        if (ValorOne.length() == ValorTwo.length()) {
+        if (ValorOne.number.length() == ValorTwo.number.length()) {
             for (int i = 0; i < a; i++) {
-                val1[i] = Integer.parseInt(ValorOne.charAt(i) + "");
-                val2[i] = Integer.parseInt(ValorTwo.charAt(i) + "");
+                val1[i] = Integer.parseInt(ValorOne.number.charAt(i) + "");
+                val2[i] = Integer.parseInt(ValorTwo.number.charAt(i) + "");
             }
-        } else if (ValorOne.length() > ValorTwo.length()) {
+        } else if (ValorOne.number.length() > ValorTwo.number.length()) {
             for (int i = 0; i < a; i++) {
-                val1[i] = Integer.parseInt(ValorOne.charAt(i) + "");
+                val1[i] = Integer.parseInt(ValorOne.number.charAt(i) + "");
             }
             for (int i = aa; i < a; i++) {
-                val2[i] = Integer.parseInt(ValorTwo.charAt(i - aa) + "");
+                val2[i] = Integer.parseInt(ValorTwo.number.charAt(i - aa) + "");
             }
         } else {
             for (int i = 0; i < a; i++) {
-                val2[i] = Integer.parseInt(ValorTwo.charAt(i) + "");
+                val2[i] = Integer.parseInt(ValorTwo.number.charAt(i) + "");
             }
             for (int i = (a - b); i < a; i++) {
-                val1[i] = Integer.parseInt(ValorOne.charAt(i - aa) + "");
+                val1[i] = Integer.parseInt(ValorOne.number.charAt(i - aa) + "");
             }
         }
+    }
+
+    public void OperSum() {
         //mostrar como quedan los arreglos que ne éste caso van a ser las sumas
         System.out.println("\n\n-_-_-_- OPERATION SUM -_-_-_-\n");
         System.out.print("    ");
@@ -115,9 +100,12 @@ public class ProyectoFinal {
             System.out.print(" [" + acum.charAt(i) + "]");
         }
         System.out.print("\n");
+    }
+
+    public void OperRest() {
         //mostrar como quedan los arreglos que ne éste caso van a ser las restas
         pint = "";
-        System.out.println("\n\n-_-_-_- OPERATION REST -_-_-_-\n");
+        System.out.println("\n\n-_-_-_- OPERATION SUBTRACTION -_-_-_-\n");
         System.out.print("    ");
         for (int i = 0; i < a; i++) {
             System.out.print(" [" + val1[i] + "]");
@@ -223,10 +211,12 @@ public class ProyectoFinal {
             System.out.print(" [" + acum1.charAt(i) + "]");
         }
         System.out.print("\n");
+    }
 
+    public void OperMult() {
         //mostrar como quedan los arreglos que ne éste caso van a ser las multiplicación
         pint = "";
-        System.out.println("\n\n-_-_-_- OPERATION MULTIPLICATION -_-_-_-\n");
+        System.out.println("\n\n-_-_-_- OPERATION MULTIPLY -_-_-_-\n");
         System.out.print("    ");
         for (int i = 0; i < a; i++) {
             System.out.print(" [" + val1[i] + "]");
@@ -238,67 +228,99 @@ public class ProyectoFinal {
             System.out.print(" [" + val2[i] + "]");
         }
         System.out.println("\n    " + pint);
-
-        ///////operación multiplicar
-        
-        String acum2 = "";
-          String arr[]= new String[val2.length];
-        for (int i = a - 1; i >= 0; i--) {
-            for (int j = val2.length-1; j >= 0; j--) {
-                if ((val1[j] * val2[i]) == 1) {
-                    acum2 += 1;
-                } else {
-                    acum2 += 0;
-                }
-            }
-               arr[i]=acum2;
-          acum2="";
-        }
-        
-        for (int i = arr.length-1; i >=0; i--) {
-            System.out.println(" [" + arr[i] + "]");
-        }
-          System.out.print("\n");
-          
-        //suma de multiplicacion
-        
-        int aux4 = 0;
-        String acum4 = "";
-        for (int i = a - 1; i >= 0; i--) {
-            if (aux4 == 0) {
-                if ((arr[0].length() + arr[1].length()) == 2) {
-                    aux4 = 1;
-                    acum4 += 0;
-                } else {
-                    acum4 += arr[0].length() + arr[1].length();
-                }
-            } else {
-                switch (arr[0].length() + arr[1].length()) {
-                    case 2:
-                        aux4 = 1;
-                        acum4 += 1;
-                        break;
-                    case 1:
-                        aux4 = 1;
-                        acum4 += 0;
-                        break;
-                    default:
-                        aux4 = 0;
-                        acum4 += 1;
-                        break;
-                }
-            }
-        }
-
-        if (aux4 == 1) {
-            acum4 += 1;
-        } else {
-            System.out.print("    ");
-        }
-        for (int i = acum4.length() - 1; i >= 0; i--) {
-            System.out.print(" [ " + acum4.charAt(i) + " ]");
+        bina = "";
+        int NuOne = Dec(Long.parseLong(ValorOne.number.toString()));
+        int NumTwo = Dec(Long.parseLong(ValorTwo.number.toString()));
+        bin((NuOne * NumTwo));
+        System.out.print("    ");
+        for (int i = 0; i < bina.length(); i++) {
+            System.out.print(" [" + bina.charAt(i) + "]");
         }
         System.out.print("\n");
-        
+    }
+
+    public void bin(int a) {//num binario
+        if (a < 1) {
+            return;
+        } else {
+            bin(a / 2);
+            bina += (a % 2) + "";
+        }
+    }
+
+    public int Dec(long number) {//num decima
+        int DECIMAl = 0;
+        int Arr[] = new int[100];
+        for (int i = 0; i < Arr.length; i++) {
+            Arr[i] = (int) Math.pow(2, i);
+        }
+        String b = number + "";
+        int le = b.length() - 1;
+        for (int i = 0; i < b.length(); i++) {
+            if (b.charAt(i) != '0') {
+                DECIMAl += Arr[le];
+            }
+            le--;
+        }
+        return DECIMAl;
+    }
+
+    public void OperDiv() {
+        //mostrar como quedan los arreglos que ne éste caso van a ser las divición
+        pint = "";
+        System.out.println("\n\n-_-_-_- OPERATION DIVIDE -_-_-_-\n");
+        System.out.print("    ");
+        this.bina = "";
+        long number = Integer.parseInt(ValorOne.number, 2);
+        long number2 = Integer.parseInt(ValorTwo.number, 2);
+        if (number == number2) {
+            for (int i = 0; i < a; i++) {
+                System.out.print(" [" + val1[i] + "]");
+                pint += "----";
+            }
+            System.out.println("\n/");
+            System.out.print("    ");
+            for (int i = 0; i < a; i++) {
+                System.out.print(" [" + val2[i] + "]");
+            }
+            int NuOne = Dec(Long.parseLong(ValorOne.number.toString()));
+            int NumTwo = Dec(Long.parseLong(ValorTwo.number.toString()));
+
+            bin((NuOne / NumTwo));
+        } else if (number > number2) {
+            for (int i = 0; i < a; i++) {
+                System.out.print(" [" + val1[i] + "]");
+                pint += "----";
+            }
+            System.out.println("\n/");
+            System.out.print("    ");
+            for (int i = 0; i < a; i++) {
+                System.out.print(" [" + val2[i] + "]");
+            }
+            int NuOne = Dec(Long.parseLong(ValorOne.number.toString()));
+            int NumTwo = Dec(Long.parseLong(ValorTwo.number.toString()));
+
+            bin((NuOne / NumTwo));
+        } else {
+            for (int i = 0; i < a; i++) {
+                System.out.print(" [" + val2[i] + "]");
+                pint += "----";
+            }
+            System.out.println("\n/");
+            System.out.print("    ");
+            for (int i = 0; i < a; i++) {
+                System.out.print(" [" + val1[i] + "]");
+            }
+            int NuOne = Dec(Long.parseLong(ValorOne.number.toString()));
+            int NumTwo = Dec(Long.parseLong(ValorTwo.number.toString()));
+
+            bin((NumTwo / NuOne));
+        }
+
+        System.out.println("\n    " + pint);
+        System.out.print("    ");
+        for (int i = 0; i < bina.length(); i++) {
+            System.out.print(" [" + bina.charAt(i) + "]");
+        }
     }
 }
