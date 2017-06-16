@@ -1,4 +1,4 @@
-package danieladiana;
+package Proyecto;
 public class Binario {
     String number;
     public Binario(String num){

@@ -1,8 +1,8 @@
-package danieladiana;
+package Proyecto;
 
 import java.util.Scanner;
 
-public class DanielaDiana {
+public class Code {
 
     public static void main(String[] args) {
         Scanner tc = new Scanner(System.in);
@@ -85,7 +85,7 @@ public class DanielaDiana {
     }
 
     public static void Menu() {
-        System.out.println("-------------------\nDigite Una Opción:\n1.-SUMAR NUMEROS\n2.-RESTARNUMEROS\n"
+        System.out.println("-------------------\nDigite Una Opción:\n1.-SUMAR NUMEROS\n2.-RESTAR NUMEROS\n"
                 + "3.-MULTIPLICAR NUMEROS\n4.-DIVIDIR NUMEROS\n5.-Salir\n-------------------");
     }
 }
