@@ -153,11 +153,11 @@ public class D implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Ingrese Solo numeros, no puedes engañarnos");
             } else {
                 bina = "";
-                bin(Integer.parseUnsignedInt(g.getText()));
+                bin(Integer.parseInt(g.getText()));
                 c.setText("Binario: " + bina);
-                b.setText("Decimal: " + (Integer.parseUnsignedInt(g.getText())));
-                d.setText("Octal: " + oct(Integer.parseUnsignedInt(g.getText())));
-                f.setText("Hexadec: " + hex(Integer.parseUnsignedInt(g.getText())));
+                b.setText("Decimal: " + (Integer.parseInt(g.getText())));
+                d.setText("Octal: " + oct(Integer.parseInt(g.getText())));
+                f.setText("Hexadec: " + hex(Integer.parseInt(g.getText())));
             }
         }
     }
