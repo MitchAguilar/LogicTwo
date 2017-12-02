@@ -5,10 +5,6 @@
  */
 package sistemaalmacen;
 
-/**
- *
- * @author micha
- */
 public class SistemaAlmacen {
 
     /**
