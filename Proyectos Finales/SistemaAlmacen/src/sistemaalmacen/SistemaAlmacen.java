@@ -37,37 +37,26 @@ public class SistemaAlmacen {
                     System.out.println(SALM.VerFacturas());
                     break;
                 case 2:
-                    //
-                    System.out.println("----Ingrese Un Usuario----");
-                    System.out.println(" \n Nombre De La Persona:");
-                    String NombrePersona = sc.nextLine();
-                    System.out.println("Numero De Cuenta:");
-                    String NumeroCuenta = sc.nextLine();
-                    System.out.println("Identificación");
-                    String Identificacion = sc.nextLine();
-                    Persona per = new Persona(NombrePersona, NumeroCuenta, Identificacion);
-                    System.out.println("INGRESE UN NUMERO DE FACTURA");
-                    String FcNumero = sc.nextLine();
-                    //maximo 5 productos
-                    System.out.println("Cantidad de productos que va a ingresar");
-                    sc= new Scanner(System.in);
-                    int numer= sc.nextInt();
-                    sc= new Scanner(System.in);
-                    Producto[] pr = new Producto[numer];
-                    for (int i = 0; i < pr.length; i++) {
-                        System.out.println("Nombre Del Producto");
-                        String PrNombre= sc.nextLine();
-                        System.out.println("Precio Del Producto");
-                        String PrPrecio= sc.nextLine();
-                        System.out.println("Código DeL Producto");
-                        String PrCodigo= sc.nextLine();
-                        Producto pr2= new Producto(PrNombre, PrCodigo, PrPrecio);
-                        pr[i]=pr2;
-                    }
-                    Factura fv = new Factura(FcNumero, per, pr);
+                    //Ingresar Factura
+                    System.out.println(SALM.IngresarFacturas(Datos()));
                     break;
                 case 3:
                     //identificacion de factura
+                    System.out.println("PARA BUSCAR FACTURAS DEBES INGRESAR EL NÚMERO O CÓDIGO DE FACTURA.");
+                    String code = sc.nextLine();
+                    System.out.println("\t- " + SALM.BuscarFactura(code));
+                    break;
+                case 4:
+                    //eliminar factura
+                    System.out.println("PARA ELIMINAR FACTURAS DEBES INGRESAR EL NÚMERO O CÓDIGO DE FACTURA.");
+                    String code2 = sc.nextLine();
+                    System.out.println("\t- " + SALM.BuscarFactura(code2));
+                    break;
+                case 5:
+                    //Editar Factura
+                    System.out.println("PARA EDITAR FACTURAS DEBES INGRESAR EL NÚMERO O CÓDIGO DE FACTURA.");
+                    String code3 = sc.nextLine();
+                    System.out.println("\t- " + SALM.EditarFactura(code3, Datos()));
                     break;
                 case 6:
                     //acabar programa
@@ -81,5 +70,39 @@ public class SistemaAlmacen {
                     break;
             }
         }
+    }
+
+    public static Factura Datos() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("----Ingrese Un Usuario----");
+        System.out.println(" \n Nombre De La Persona:");
+        String NombrePersona = sc.nextLine();
+        System.out.println("Numero De Cuenta:");
+        String NumeroCuenta = sc.nextLine();
+        System.out.println("Identificación");
+        String Identificacion = sc.nextLine();
+        Persona per = new Persona(NombrePersona, NumeroCuenta, Identificacion);
+        System.out.println("Ingrese Un Código o Número de Factura");
+        String FcNumero = sc.nextLine();
+        //maximo 5 productos
+        System.out.println("Cantidad de productos que va a ingresar");
+        sc = new Scanner(System.in);
+        int numer = sc.nextInt();
+        sc = new Scanner(System.in);
+        Producto[] pr = new Producto[numer];
+        System.out.println("#########################");
+        for (int i = 0; i < pr.length; i++) {
+            System.out.println("Nombre Del Producto");
+            String PrNombre = sc.nextLine();
+            System.out.println("Precio Del Producto");
+            String PrPrecio = sc.nextLine();
+            System.out.println("Código Del Producto");
+            String PrCodigo = sc.nextLine();
+            Producto pr2 = new Producto(PrNombre, PrCodigo, PrPrecio);
+            pr[i] = pr2;
+            System.out.println("#########################");
+        }
+        Factura fv = new Factura(FcNumero, per, pr);
+        return fv;
     }
 }
