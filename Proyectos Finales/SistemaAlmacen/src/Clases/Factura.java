@@ -7,10 +7,10 @@ package Clases;
 
 public class Factura {
    String FcNumero;
-   Cuenta Usuario;
+   Persona Usuario;
    Producto Producto[];
 
-    public Factura(String FcNumero, Cuenta Usuario, Producto[] Producto) {
+    public Factura(String FcNumero, Persona Usuario, Producto[] Producto) {
         this.FcNumero = FcNumero;
         this.Usuario = Usuario;
         this.Producto = Producto;
@@ -27,11 +27,11 @@ public class Factura {
         this.FcNumero = FcNumero;
     }
 
-    public Cuenta getUsuario() {
+    public Persona getUsuario() {
         return Usuario;
     }
 
-    public void setUsuario(Cuenta Usuario) {
+    public void setUsuario(Persona Usuario) {
         this.Usuario = Usuario;
     }
 
@@ -42,5 +42,4 @@ public class Factura {
     public void setProducto(Producto[] Producto) {
         this.Producto = Producto;
     }
-   
 }

@@ -5,34 +5,43 @@
  */
 package Clases;
 
-import java.util.Scanner;
-
 public class SistemaFacturación {
-    Factura factura;
-    Producto productos[];
 
-    public SistemaFacturación(Factura factura, Producto[] productos) {
+    Factura factura[];
+    
+    public SistemaFacturación(Factura[] factura) {
         this.factura = factura;
-        this.productos = productos;
     }
 
     public SistemaFacturación() {
+        this.factura = new Factura[10];
     }
 
-    public Factura getFactura() {
+    public Factura[] getFactura() {
         return factura;
     }
-
-    public void setFactura(Factura factura) {
+    
+    public void setFactura(Factura[] factura) {
         this.factura = factura;
     }
 
-    public Producto[] getProductos() {
-        return productos;
+    public void IngresarFacturas(Persona Pe, Factura fc) {
+        
+    }
+    public String VerFacturas(){
+        String dev="";
+        for (int i = 0; i < factura.length; i++) {
+            if(factura[i]!=null){
+                dev+="\tFactura # "+(i+1)+" Existe\n";
+            }else{
+                dev+="\tFactura # "+(i+1)+" No existe\n";
+            }
+        }
+        return dev;
     }
 
-    public void setProductos(Producto[] productos) {
-        this.productos = productos;
+    @Override
+    public String toString() {
+        return "SistemaFacturaci\u00f3n{" + "factura=" + factura + '}';
     }
-    
 }

@@ -5,18 +5,17 @@
  */
 package Clases;
 
-public class Cuenta {
+public class Persona {
 
-    String NombrePersona, NumeroCuenta;
-    int ValorCuenta;
+    String NombrePersona, NumeroCuenta, Identificacion;
 
-    public Cuenta(String NombrePersona, String NumeroCuenta, int ValorCuenta) {
+    public Persona(String NombrePersona, String NumeroCuenta, String Identificacion) {
         this.NombrePersona = NombrePersona;
         this.NumeroCuenta = NumeroCuenta;
-        this.ValorCuenta = ValorCuenta;
+        this.Identificacion = Identificacion;
     }
 
-    public Cuenta() {
+    public Persona() {
     }
 
     public String getNombrePersona() {
@@ -35,13 +34,12 @@ public class Cuenta {
         this.NumeroCuenta = NumeroCuenta;
     }
 
-    public int getValorCuenta() {
-        return ValorCuenta;
+    public String getIdentificacion() {
+        return Identificacion;
     }
 
-    public void setValorCuenta(int ValorCuenta) {
-        this.ValorCuenta = ValorCuenta;
+    public void setIdentificacion(String Identificacion) {
+        this.Identificacion = Identificacion;
     }
-    
-    
+
 }
